@@ -1,2 +1,2 @@
 # StudySync
-The StudySync is a web application designed to help students manage their study time.
+StudySync is a web application designed to help students manage their study time.
