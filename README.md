@@ -1,2 +1,2 @@
-# Study-Session-Tracker
-The study session tracker is a web application designed to help students manage their study time.
+# StudySync
+The StudySync is a web application designed to help students manage their study time.
