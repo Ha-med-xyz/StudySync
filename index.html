@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StudySync — Study Session Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⬡</span>
+      <span class="brand-name">StudySync</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+      <li><a href="#log" class="nav-link">Log Session</a></li>
+      <li><a href="#progress" class="nav-link">Progress</a></li>
+      <li><a href="#goals" class="nav-link">Goals</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <section id="dashboard" class="section">
+      <div class="section-header">
+        <h1 class="section-title">Dashboard</h1>
+        <p class="section-sub" id="date-display"></p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card card-streak">
+          <div class="stat-label">Current Streak</div>
+          <div class="stat-value" id="streak-count">0</div>
+          <div class="stat-unit">days 🔥</div>
+        </div>
+        <div class="stat-card card-today">
+          <div class="stat-label">Today's Study Time</div>
+          <div class="stat-value" id="today-hours">0.0</div>
+          <div class="stat-unit">hours</div>
+        </div>
+        <div class="stat-card card-sessions">
+          <div class="stat-label">Total Sessions</div>
+          <div class="stat-value" id="total-sessions">0</div>
+          <div class="stat-unit">logged</div>
+        </div>
+        <div class="stat-card card-goal">
+          <div class="stat-label">Daily Goal</div>
+          <div class="stat-value" id="goal-display">—</div>
+          <div class="stat-unit">hours target</div>
+        </div>
+      </div>
+      <div class="goal-bar-section" id="goal-bar-section" style="display:none;">
+        <div class="goal-bar-label">
+          <span>Daily Goal Progress</span>
+          <span id="goal-bar-text">0 / 0 hrs</span>
+        </div>
+        <div class="goal-bar-track">
+          <div class="goal-bar-fill" id="goal-bar-fill"></div>
+        </div>
+      </div>
+      <div class="recent-section">
+        <h2 class="sub-heading">Recent Sessions</h2>
+        <div id="sessions-list" class="sessions-list">
+          <p class="empty-state">No sessions logged yet. Start studying! 📚</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="log" class="section hidden">
+      <div class="section-header">
+        <h1 class="section-title">Log a Session</h1>
+        <p class="section-sub">Record your study time by subject.</p>
+      </div>
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label" for="subject">Subject <span class="required">*</span></label>
+          <input type="text" id="subject" class="form-input" placeholder="e.g. Web Programming" />
+          <span class="error-msg" id="subject-error"></span>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="duration">Duration (hours) <span class="required">*</span></label>
+            <input type="number" id="duration" class="form-input" placeholder="e.g. 1.5" step="0.25" min="0.25" max="12"/>
+            <span class="error-msg" id="duration-error"></span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="session-date">Date <span class="required">*</span></label>
+            <input type="date" id="session-date" class="form-input"/>
+            <span class="error-msg" id="date-error"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="notes">Notes <span class="optional">(optional)</span></label>
+          <textarea id="notes" class="form-input form-textarea" placeholder="What did you cover?"></textarea>
+        </div>
+        <button class="btn-primary" id="log-btn">Log Session</button>
+      </div>
+    </section>
+
+    <section id="progress" class="section hidden">
+      <div class="section-header">
+        <h1 class="section-title">Progress</h1>
+        <p class="section-sub">Your weekly study breakdown.</p>
+      </div>
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-title">Hours by Subject (This Week)</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-title">Subject Breakdown</h3>
+          <canvas id="doughnutChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals" class="section hidden">
+      <div class="section-header">
+        <h1 class="section-title">Goals</h1>
+        <p class="section-sub">Set your daily study target.</p>
+      </div>
+      <div class="form-card">
+        <div class="form-group">
+          <label class="form-label" for="daily-goal">Daily Study Goal (hours) <span class="required">*</span></label>
+          <input type="number" id="daily-goal" class="form-input" placeholder="e.g. 3" step="0.5" min="0.5" max="16"/>
+          <span class="error-msg" id="goal-error"></span>
+        </div>
+        <button class="btn-primary" id="save-goal-btn">Save Goal</button>
+        <p class="current-goal-display" id="current-goal-text"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
