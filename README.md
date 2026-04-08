@@ -8,6 +8,7 @@ StudySync is a browser-based study session tracker designed to help students man
 
 ## 🎬 Feature Demo
 
+
 ![StudySync Demo](assets/demo.gif)
 
 ## 👥 Team Members
@@ -36,6 +37,7 @@ StudySync is a browser-based study session tracker designed to help students man
 ## 📁 Repository Structure
 
 ```
+
 StudySync/
 ├── index.html
 ├── app.js
