@@ -50,3 +50,6 @@ StudySync/
 ## 📌 Commit SHA (Phase 2 Merge)
 
 `806f8ba` — Merge pull request #7 from Ha-med-xyz/feature/layout-structure
+
+## Live Site
+https://ha-med-xyz.github.io/StudySync/
