@@ -150,13 +150,13 @@ function setupGoalsForm() {
     renderDashboard();
   });
 }
-let barChartInstance = null;
-let doughnutChartInstance = null;
 function getWeekSessions() {
   const sessions = getSessions();
   const today = new Date();
+  today.setHours(23, 59, 59, 999);
   const weekAgo = new Date();
   weekAgo.setDate(today.getDate() - 6);
+  weekAgo.setHours(0, 0, 0, 0);
   return sessions.filter(s => {
     const d = new Date(s.date + 'T00:00:00');
     return d >= weekAgo && d <= today;
