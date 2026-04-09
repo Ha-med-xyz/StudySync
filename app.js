@@ -1,3 +1,6 @@
+let barChartInstance = null;
+let doughnutChartInstance = null;
+
 function getSessions() {
   return JSON.parse(localStorage.getItem('ss_sessions') || '[]');
 }
@@ -35,7 +38,7 @@ function calcStreak(sessions) {
       streak++;
       const dt = new Date(check + 'T00:00:00');
       dt.setDate(dt.getDate() - 1);
-      check = dt.toISOString().split('T')[0];
+      check = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
     } else if (d < check) { break; }
   }
   return streak;
