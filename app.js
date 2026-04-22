@@ -28,6 +28,7 @@ function showToast(msg, isError = false) {
   toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 3000);
 }
+// Calculates the current study streak based on session history
 function calcStreak(sessions) {
   if (!sessions.length) return 0;
   const days = [...new Set(sessions.map(s => s.date))].sort().reverse();
@@ -39,8 +40,9 @@ function calcStreak(sessions) {
       const dt = new Date(check + 'T00:00:00');
       dt.setDate(dt.getDate() - 1);
       check = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
-    } else if (d < check) { break; }
+    } else if (d < check) { break; } 
   }
+
   return streak;
 }
 function escHtml(str) {
